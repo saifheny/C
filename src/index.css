@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", ui-sans-serif, system-ui, sans-serif;
+
+  --color-glass-surface: rgba(255, 255, 255, 0.03);
+  --color-glass-border: rgba(255, 255, 255, 0.05);
+}
+
+@layer utilities {
+  .glass-panel {
+    background-color: var(--color-glass-surface);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid var(--color-glass-border);
+    border-radius: 1.5rem;
+  }
+  
+  .text-glow {
+    text-shadow: 0 0 40px rgba(139, 92, 246, 0.5);
+  }
+  
+  .font-wavy {
+    font-family: 'Great Vibes', cursive;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #000;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+@media (pointer: fine) {
+  * {
+    cursor: none !important;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #000;
+}
+::-webkit-scrollbar-thumb {
+  background: #222;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #444;
+}
+
+@keyframes liquid-drip-fall {
+  0% { transform: translateY(-10vh) scaleY(1); opacity: 0; }
+  10% { opacity: 1; }
+  80% { transform: translateY(100vh) scaleY(3); opacity: 0.6; }
+  100% { transform: translateY(120vh) scaleY(1); opacity: 0; }
+}
+
+.liquid-drip-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+}
+
+.liquid-line {
+  width: 2px;
+  height: 80px;
+  background: linear-gradient(to bottom, transparent, rgba(99, 102, 241, 0.8), rgba(255, 255, 255, 0.9));
+  animation: liquid-drip-fall linear infinite;
+  border-radius: 2px;
+  filter: blur(1px);
+}
+
+@keyframes alien-float {
+  0%   { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; transform: rotate(0deg); }
+  50%  { border-radius: 60% 40% 30% 70% / 50% 60% 40% 50%; transform: rotate(15deg); }
+  100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; transform: rotate(0deg); }
+}
+
+.alien-blob {
+  animation: alien-float 4s ease-in-out infinite;
+}
+
+.alien-squish {
+  border-radius: 60% 40% 60% 40% / 70% 70% 30% 30%;
+  transform: scaleY(0.7) scaleX(1.3);
+}
